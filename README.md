@@ -15,31 +15,32 @@ Awesome native OpenGL-powered maps - by Mapbox
 
 # WARNING
 
-As we switched to a community managed plugin we upgraded the version of the Mapbox SDKs. Though starting from iOS SDK 6.0 and android SDK 9.0 they need special handling for downloading the SDK:
-[iOS](https://docs.mapbox.com/ios/maps/overview/#configure-credentials)
+As we switched to a community managed plugin we upgraded the version of the Mapbox SDKs. Though starting from iOS SDK 6.0 and Android SDK 9.0 they need special handling for downloading the SDK:
 
-[Android](https://docs.mapbox.com/android/maps/overview/#configure-credentials)
+[Android](https://docs.mapbox.com/android/maps/guides/install/#configure-credentials)
+[iOS](https://docs.mapbox.com/ios/maps/guides/install/#configure-credentials)
 
-On android the plugin default to 8.x. You can change it by creating a `before-plugins.gradle` in `App_Resources/Android` with (showing current versions):
+On Android the plugin default to 9.x. You can change it by creating a `before-plugins.gradle` in `App_Resources/Android` with (showing current versions):
+
 ```
 ext {
     okHttpVersion = "3.12.10"
-    def mapboxVersion =  "8.6.6"
-    def mapboxTelemetryVersion =  "6.1.0"
+    def mapboxVersion =  "9.6.1"
+    def mapboxTelemetryVersion =  "7.0.0"
     def mapboxPluginsVersion =  "v9"
     def mapboxAnnotationPluginVersion =  "0.9.0"
     def mapboxGesturesVersion =  "0.7.0"
 }
-
 ```
 
 On iOS we dont force anything so it will get the latest one. If you want to change it create a `Podfile` in `App_Resources/iOS` with (see demo app):
+
 ```
 pod 'Mapbox-iOS-SDK', '~> 5.1.1'
 ```
 
-
 ## Before you begin - Prerequisites
+
 You either need your own tile server such as the one provided by [openmaptiles.org](https://openmaptiles.org) or a Mapbox API access token (they have a 🆓 Starter plan!), so [sign up with Mapbox](https://www.mapbox.com/signup/).
 Once you've registered go to your Account > Apps > New token. The 'Default Secret Token' is what you'll need.
 
@@ -53,7 +54,7 @@ $ ns plugin install @nativescript-community/ui-mapbox
 
 # DEMOS
 
-Two demo applications are available in the repository. 
+Two demo applications are available in the repository.
 
 To run them, you'll need to clone the github repository and build the plugin. See below.
 
@@ -64,11 +65,11 @@ The style can be set to one of the Mapbox style names or it can be the URL of yo
 > NOTE: As of this writing, the NativeScript demo only works with a mapbox token. The demo-angular will work with either a self hosted tile server or a mapbox token.
 
 ## Demo prerequisites
+
 ```
 npm i
 npm run setup
 ```
-
 
 ## To run the Angular demo
 
@@ -79,6 +80,7 @@ ns run <platform>
 ```
 
 ## To run the plain Nativescript demo
+
 ```
 npm run build
 cd ./demo
@@ -104,10 +106,12 @@ If you get an error related to `TelemetryService` then please check it's there.
 ## Usage
 
 ### Demo app (XML + TypeScript)
+
 If you want a quickstart, see the demo in this repository.
 It shows you how to draw a map in XML and JS with almost all possible options.
 
 ### Demo app (Angular)
+
 There is also the beginnings of an Angular demo in demo-angular in this repository.
 
 ## Declaring a map in the view
@@ -252,7 +256,7 @@ Check out the usage details on the functions below.
 
 ## Declaring a map programmatically
 
-Add a container to your view XML where you want to programmatically add the map. Give it an id. 
+Add a container to your view XML where you want to programmatically add the map. Give it an id.
 
 ```
 <ContentView id="mapContainer" />
@@ -307,7 +311,7 @@ Add a container to your view XML where you want to programmatically add the map.
 
     const mapView = new MapboxView();
 
-    // Bind some event handlers onto our newly created map view. 
+    // Bind some event handlers onto our newly created map view.
 
     mapView.on( 'mapReady', ( args : any ) => {
 
@@ -343,7 +347,7 @@ Add a container to your view XML where you want to programmatically add the map.
 
     mapView.setConfig( settings );
     contentView.content = mapView;
-  
+
 ```
 
 ### hide
@@ -568,11 +572,11 @@ The map will continuously move along with the last known location.
 
 ### addSource
 
-https://docs.mapbox.com/mapbox-gl-js/api/#map#addsource 
+https://docs.mapbox.com/mapbox-gl-js/api/#map#addsource
 
 Supported source types:
  - Vector
- - GeoJson 
+ - GeoJson
  - Raster
 
 Adds a vector to GeoJSON source to the map.
@@ -609,10 +613,10 @@ Remove a source by id
 
 ### addLayer
 https://docs.mapbox.com/mapbox-gl-js/style-spec/#layers
- 
+
 Supported layer types:
  - Line
- - Circle 
+ - Circle
  - Fill
  - Symbol
  - Raster
@@ -637,7 +641,7 @@ To add a line:
     'layout': {
       'line-cap': 'round',
       'line-join': 'round'
-    },    
+    },
     'paint': {
       'line-color': '#ed6498',
       'line-width': 5,
@@ -662,7 +666,7 @@ To add a circle:
           "coordinates": [ lng, lat ]
         }
       }
-    }, 
+    },
     "paint": {
       "circle-radius": {
         "stops": [
@@ -675,11 +679,11 @@ To add a circle:
       'circle-color': '#ed6498',
       'circle-stroke-width': 2,
       'circle-stroke-color': '#ed6498'
-    } 
+    }
   });
 ```
 
-Source may be a geojson or vector source description or may be 
+Source may be a geojson or vector source description or may be
 the id of a source added using addSource()
 
 ### removeLayer

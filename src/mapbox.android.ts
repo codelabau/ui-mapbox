@@ -178,6 +178,8 @@ export class MapboxView extends MapboxViewBase {
      * @todo check this.
      */
     public createNativeView(): Object {
+        console.log('mapbox.android: createNativeView');
+
         if (Trace.isEnabled()) {
             CLog(CLogTypes.info, 'createNativeView(): top');
         }
@@ -192,6 +194,8 @@ export class MapboxView extends MapboxViewBase {
     }
 
     public onLoaded() {
+        console.log('mapbox.android: onLoaded');
+
         super.onLoaded();
         if (Trace.isEnabled()) {
             CLog(CLogTypes.info, 'onLoaded()');
@@ -255,6 +259,8 @@ export class MapboxView extends MapboxViewBase {
      * @todo FIXME: this.nativeMapView is unused and never actually set to anything.
      */
     private initMap(): void {
+        console.log('mapbox.android: initMap');
+
         if (Trace.isEnabled()) {
             CLog(CLogTypes.info, "MapboxView:initMap(): top - accessToken is '" + this.config.accessToken + "'", this.config);
         }
